@@ -1,0 +1,206 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "xcconfig",
+  "scopeName": "source.xcconfig",
+  "patterns": [
+    {
+      "include": "#line_comment"
+    },
+    {
+      "match": "inherited",
+      "name": "keyword.other.parameter.direction.$0.xcconfig"
+    },
+    {
+      "match": "\\b([a-zA-Z0-9_]+)(\\[[^\\]]+\\])?\\s*=\\s*",
+      "captures": {
+        "0": {
+          "name": "keyword.other.parameter.direction.$1.xcconfig"
+        }
+      }
+    },
+    {
+      "include": "#anon_pattern_range_3"
+    },
+    {
+      "begin": "(^[ \\t]+)?(?=;)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.whitespace.comment.leading.xcconfig"
+        }
+      },
+      "end": "(?!\\G)",
+      "patterns": [
+        {
+          "begin": ";",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.xcconfig"
+            }
+          },
+          "end": "\\n",
+          "name": "comment.line.semicolon.xcconfig"
+        }
+      ]
+    },
+    {
+      "include": "#key_word"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.entity.xcconfig"
+        },
+        "3": {
+          "name": "punctuation.definition.entity.xcconfig"
+        }
+      },
+      "match": "^(\\[)(.*?)(\\])",
+      "name": "entity.name.section.group-title.xcconfig"
+    },
+    {
+      "begin": "'",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.xcconfig"
+        }
+      },
+      "end": "'",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.xcconfig"
+        }
+      },
+      "name": "string.quoted.single.xcconfig",
+      "patterns": [
+        {
+          "match": "\\\\.",
+          "name": "constant.character.escape.xcconfig"
+        }
+      ]
+    },
+    {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.xcconfig"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.xcconfig"
+        }
+      },
+      "name": "string.quoted.double.xcconfig"
+    }
+  ],
+  "repository": {
+    "line_comment": {
+      "patterns": [
+        {
+          "begin": "\\s*+(\\/\\/)",
+          "end": "(?<=\\n)(?<!\\\\\\n)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.comment.xcconfig"
+            }
+          },
+          "endCaptures": {},
+          "name": "comment.line.double-slash.xcconfig",
+          "patterns": [
+            {
+              "include": "#line_continuation_character"
+            }
+          ]
+        },
+        {
+          "begin": "\\s*+(\\/\\/)",
+          "end": "(?<=\\n)(?<!\\\\\\n)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.comment.xcconfig"
+            }
+          },
+          "endCaptures": {},
+          "name": "comment.line.double-slash.xcconfig",
+          "patterns": [
+            {
+              "include": "#line_continuation_character"
+            }
+          ]
+        }
+      ]
+    },
+    "line_continuation_character": {
+      "patterns": [
+        {
+          "match": "(\\\\)\\n",
+          "captures": {
+            "1": {
+              "name": "constant.character.escape.line-continuation.xcconfig"
+            }
+          }
+        }
+      ]
+    },
+    "anon_pattern_range_3": {
+      "begin": "^\\s*((#)\\s*(include(?:_next)?|import))\\b\\s*",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.directive.$3.xcconfig"
+        },
+        "2": {
+          "name": "punctuation.definition.directive.xcconfig"
+        }
+      },
+      "end": "(?=(?://|/\\*))|(?<!\\\\)(?=\\n)",
+      "name": "meta.preprocessor.include.xcconfig",
+      "patterns": [
+        {
+          "include": "#line_continuation_character"
+        },
+        {
+          "begin": "\"",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.xcconfig"
+            }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.xcconfig"
+            }
+          },
+          "name": "string.quoted.double.include.xcconfig"
+        },
+        {
+          "begin": "<",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.xcconfig"
+            }
+          },
+          "end": ">",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.xcconfig"
+            }
+          },
+          "name": "string.quoted.other.lt-gt.include.xcconfig"
+        }
+      ]
+    },
+    "key_word": {
+      "captures": {
+        "1": {
+          "name": "keyword.other.definition.xcconfig"
+        },
+        "2": {
+          "name": "punctuation.separator.key-value.xcconfig"
+        }
+      },
+      "match": "\\b([a-zA-Z0-9_.-]+)\\b\\s*(=)"
+    }
+  }
+}

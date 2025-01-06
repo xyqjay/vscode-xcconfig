@@ -1,0 +1,43 @@
+{
+  "name": "vscode-xcconfig",
+  "displayName": "vscode-xcconfig",
+  "description": "VS Code xcconfig language support",
+  "publisher": "xyqjay",
+  "license": "MIT",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "*"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "scripts": {
+    "test": "vscode-test"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "xcconfig",
+        "aliases": [
+          "xcconfig",
+          "xcconfig"
+        ],
+        "extensions": [
+          ".xcconfig"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "xcconfig",
+        "scopeName": "source.xcconfig",
+        "path": "./syntaxes/xcconfig.tmLanguage.json"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xyqjay/vscode-xcconfig.git"
+  }
+}
